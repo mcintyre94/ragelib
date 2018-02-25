@@ -10,6 +10,7 @@ name = "pypi"
 requests = "*"
 selenium = "*"
 jupyter = "*"
+"bs4" = "*"
 
 
 [dev-packages]
