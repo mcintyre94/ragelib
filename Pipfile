@@ -11,6 +11,8 @@ requests = "*"
 selenium = "*"
 jupyter = "*"
 "bs4" = "*"
+tabulate = "*"
+tqdm = "*"
 
 
 [dev-packages]
