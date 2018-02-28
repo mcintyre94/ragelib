@@ -1,10 +1,11 @@
 import argparse
 import logging
 import os
+import sys
 
-from body_writer import HTMLBodyWriter
-from image_fetcher import ImageFetcher
-from report_parser import ReportParser
+from ..src.body_writer import HTMLBodyWriter
+from ..src.image_fetcher import ImageFetcher
+from ..src.report_parser import ReportParser
 
 def write_out(body, outfile):
 
