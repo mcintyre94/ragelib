@@ -3,9 +3,6 @@ This module parses a RAGE brief report, and for each row supplements it with the
 
 Note: It doesn't do any magic with the graph URL, it is expected to be in an appropriate state.
 Typically this means they should end with #brief-report-analysis, which is already handled by the brief report.
-
-
-
 """
 
 import argparse
@@ -23,9 +20,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class ReportParser():
-    def __init__(self, report_file):
-        with open(report_file) as html_file:
-            self.soup = BeautifulSoup(html_file, 'html.parser')
+    def __init__(self, report_html):
+        self.soup = BeautifulSoup(report_html, 'html.parser')
 
     @staticmethod
     def get_description(tr):
@@ -195,8 +191,10 @@ def parse_args_or_exit():
 
 def main():
     args = parse_args_or_exit()
+    with open(args.file) as html_file:
+        report_html = html_file.read()
 
-    parsed_report = ReportParser(args.file).parse_data()
+    parsed_report = ReportParser(report_html).parse_data()
     data_headings, data = parsed_report['data_headings'], parsed_report['data']
 
     data_with_images = ImageFetcher(data, args.geckodriver_path).fetch_images()
