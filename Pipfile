@@ -7,9 +7,7 @@ name = "pypi"
 
 [packages]
 
-requests = "*"
 selenium = "*"
-jupyter = "*"
 "bs4" = "*"
 tqdm = "*"
 
